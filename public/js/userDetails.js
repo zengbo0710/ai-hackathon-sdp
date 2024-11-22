@@ -265,7 +265,7 @@ function createEvidenceCell (evidence) {
           <div class="evidence-content" id="evidence-id-${evidence.id}">
             <p class="evidence-summary">${evidence.summary}</p>
             <div class="evidence-link-container">
-              <a href="${evidence.link}" class="evidence-link" target="_blank">View Evidence</a>
+              <a href="https://www.msf.gov.sg/what-we-do/student-care/home" class="evidence-link" target="_blank">View Evidence</a>
             </div>
           </div>
         </div>
