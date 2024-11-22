@@ -1,20 +1,10 @@
-const axios = require('axios');
+const axios = require('axios')
 
-async function analyzeDrawing(drawing, user) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  const apiUrl = 'https://api.openai.com/v1/chat/completions';
-  const imagePrompt = generateImagePrompt(user);
+async function analyzeDrawing (drawing, user) {
+  const apiKey = process.env.OPENAI_API_KEY
+  const apiUrl = 'https://api.openai.com/v1/chat/completions'
 
-  try {
-    const response = await fetchAnalysis(apiUrl, apiKey, imagePrompt, drawing);
-    return cleanResponse(response);
-  } catch (error) {
-    handleError(error);
-  }
-}
-
-function generateImagePrompt(user) {
-  return `You are an experienced art therapist and educator analyzing a drawing from a ${user.user.level} level student.
+  const imagePrompt = `You are an experienced art therapist and educator analyzing a drawing from a ${user.user.level} level student.
 Please provide a detailed analysis in the following areas:
 
 1. General Assessment: Evaluate the drawing considering the student's level ${user.user.level}, including technical skills, composition, and age-appropriate expectations.
@@ -44,41 +34,41 @@ Format your response in HTML with appropriate tags for structured presentation:
     <h3>Additional Observations</h3>
     [additional analysis]
   </section>
-</div>`;
-}
+</div>
+`
 
-async function fetchAnalysis(apiUrl, apiKey, imagePrompt, drawing) {
-  return await axios.post(apiUrl, {
-    model: 'gpt-4o',
-    messages: [
-      { role: 'system', content: imagePrompt },
-      {
-        role: 'user',
-        content: [
-          {
-            type: 'image_url',
-            image_url: { url: drawing }
-          }
-        ]
+  try {
+    const response = await axios.post(apiUrl, {
+      model: 'gpt-4o',
+      messages: [
+        { role: 'system', content: imagePrompt },
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'image_url',
+              image_url: {
+                // url: 'https://i.ibb.co/9vhgZPQ/face-drawing.jpg'
+                url: drawing
+              }
+            }
+          ]
+        }
+      ],
+      max_tokens: 1000,
+      temperature: 0.7
+    }, {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
       }
-    ],
-    max_tokens: 1000,
-    temperature: 0.7
-  }, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json'
-    }
-  });
+    })
+    const cleanedResponse = response.data.choices[0].message.content.trim().replace(/\n/g, ' ').replace(/"/g, '')
+    return cleanedResponse
+  } catch (error) {
+    console.error('Error analyzing drawing:', error)
+    throw new Error('Failed to analyze drawing')
+  }
 }
 
-function cleanResponse(response) {
-  return response.data.choices[0].message.content.trim().replace(/\n/g, ' ').replace(/"/g, '');
-}
-
-function handleError(error) {
-  console.error('Error analyzing drawing:', error);
-  throw new Error('Failed to analyze drawing');
-}
-
-module.exports = analyzeDrawing;
+module.exports = analyzeDrawing

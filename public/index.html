@@ -11,83 +11,93 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<div class="dashboard">
-    <aside class="sidebar">
-        <div class="logo">
-            <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="200" height="50" fill="#4285F4"/>
-                <text x="20" y="35" font-family="Arial, sans-serif" font-size="24" fill="white">GovTech</text>
-            </svg>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#" id="show-details-link" class="active"><i class="fas fa-id-card"></i> Student Details</a></li>
-                <li><a href="#" id="manage-evidences-link"><i class="fas fa-tasks"></i> Manage Footsteps</a></li>
-                <li><a href="#" id="grade-english-essay-link"><i class="fas fa-spell-check"></i> Grade English Essay</a></li>
-                <li><a href="#" id="analyze-drawing-link"><i class="fas fa-paint-brush"></i> Analyze Drawing</a></li>
-                <li><a href="#" id="generate-summary-link"><i class="fas fa-chart-line"></i> Analyze Profile</a></li>
-            </ul>
-        </nav>
-    </aside>
-    <main class="main-content">
-        <header class="top-bar">
-            <h1 class="animate__animated animate__fadeIn">Student Development Portal</h1>
-            <div id="user-select-container" style="display: none;">
-                <select id="user-select"></select>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="50" fill="#4285F4"/>
+                    <text x="20" y="35" font-family="Arial, sans-serif" font-size="24" fill="white">GovTech</text>
+                </svg>
             </div>
-        </header>
-        <div id="manage-evidences-view" style="display: none;">
-            <h1>Manage Footsteps</h1>
-            <p>This section is under construction.</p>
-        </div>
-        <div id="show-details-view">
-            <div class="content-area">
-                <section id="user-info" class="card animate__animated animate__fadeIn"></section>
-                <section id="user-radar" class="card animate__animated animate__fadeIn"></section>
-                <section id="progress" class="card animate__animated animate__fadeIn">
-                    <h2>Growth & Development Map</h2>
-                    <div id="progress-table"></div>
-                </section>
-                <section id="summary" class="card animate__animated animate__fadeIn">
-                    <h2>Summary</h2>
-                    <p id="summary-text"></p>
-                </section>
-                <section id="impact" class="card animate__animated animate__fadeIn">
-                    <h2>Key Achievements</h2>
-                    <ul id="impact-list"></ul>
-                </section>
-                <div id="behaviours-list"></div>
+            <nav>
+                <ul>
+                    <li><a href="#" id="show-details-link" class="active"><i class="fas fa-id-card"></i> Student Details</a></li>
+                    <li><a href="#" id="manage-evidences-link"><i class="fas fa-tasks"></i> Manage Footsteps</a></li>
+                    <li><a href="#" id="grade-english-essay-link"><i class="fas fa-spell-check"></i> Grade English Essay</a></li>
+                    <li><a href="#" id="analyze-drawing-link"><i class="fas fa-paint-brush"></i> Analyze Drawing</a></li>
+                    <li><a href="#" id="generate-summary-link"><i class="fas fa-chart-line"></i> Analyze Profile</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 class="animate__animated animate__fadeIn">Student Development Portal</h1>
+                <div id="user-select-container" style="display: none;">
+                    <select id="user-select"></select>
+                </div>
+            </header>
+            <div id="manage-evidences-view" style="display: none;">
+                <!-- Empty body for now, to be implemented later -->
+                <h1>Manage Footsteps</h1>
+                <p>This section is under construction.</p>
             </div>
-        </div>
-        <div id="generate-summary-view" style="display: none;">
-            <div class="content-area">
-                <section id="user-summary-info" class="card animate__animated animate__fadeIn"></section>
+            <div id="show-details-view">
+                <div class="content-area">
+                    <section id="user-info" class="card animate__animated animate__fadeIn">
+                        <!-- User info content -->
+                    </section>
+                    <section id="user-radar" class="card animate__animated animate__fadeIn">
+                    </section>
+                    <section id="progress" class="card animate__animated animate__fadeIn">
+                        <h2>Growth & Development Map</h2>
+                        <div id="progress-table"></div>
+                    </section>
+                    <section id="summary" class="card animate__animated animate__fadeIn">
+                        <h2>Summary</h2>
+                        <p id="summary-text"></p>
+                    </section>
+                    <section id="impact" class="card animate__animated animate__fadeIn">
+                        <h2>Key Achievements</h2>
+                        <ul id="impact-list"></ul>
+                    </section>
+                    <div id="behaviours-list">
+                        <!-- Behaviour sections will be added here dynamically -->
+                    </div>
+                </div>
             </div>
-        </div>
-        <div id="grade-english-essay-view" style="display: none;">
-            <div class="content-area">
-                <section id="essay-grading-section" class="card animate__animated animate__fadeIn"></section>
+            <div id="generate-summary-view" style="display: none;">
+                <div class="content-area">
+                    <section id="user-summary-info" class="card animate__animated animate__fadeIn">
+                    </section>
+                </div>
             </div>
-        </div>
-        <div id="analyze-drawing-view" style="display: none;">
-            <div class="content-area">
-                <section id="analyze-drawing-section" class="card animate__animated animate__fadeIn"></section>
+            <div id="grade-english-essay-view" style="display: none;">
+                <div class="content-area">
+                    <section id="essay-grading-section" class="card animate__animated animate__fadeIn">
+                    </section>
+                </div>
             </div>
-        </div>
-    </main>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
-<script src="js/main.js"></script>
-<script src="js/evidenceManagement.js"></script>
-<script src="js/userDetails.js"></script>
-<script src="js/generateUserSummary.js"></script>
-<script src="js/gradeEnglishEssay.js"></script>
-<script src="js/analyzeDrawing.js"></script>
-<script>
-    var scroll = new SmoothScroll('a[href*="#"]', {
-        speed: 800,
-        speedAsDuration: true
-    });
-</script>
+            <div id="analyze-drawing-view" style="display: none;">
+                <div class="content-area">
+                    <section id="analyze-drawing-section" class="card animate__animated animate__fadeIn">
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/evidenceManagement.js"></script>
+    <script src="js/userDetails.js"></script>
+    <script src="js/generateUserSummary.js"></script>
+    <script src="js/gradeEnglishEssay.js"></script>
+    <script src="js/analyzeDrawing.js"></script>
+    <script>
+        // Initialize smooth scroll
+        var scroll = new SmoothScroll('a[href*="#"]', {
+            speed: 800,
+            speedAsDuration: true
+        });
+    </script>
 </body>
 </html>
