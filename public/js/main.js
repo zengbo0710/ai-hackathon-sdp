@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!userSelect.value) {
       hideUserDetails()
-      showWelcomeMessage('show-details-view', 'User Details')
+      showWelcomeMessage('show-details-view', 'Student Development Details')
     }
   }
 
