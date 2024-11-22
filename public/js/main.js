@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     analyzeDrawingLink.classList.remove('active')
     if (!userSelect.value) {
       hideSummaryDetails()
-      showWelcomeMessage('generate-summary-view', 'Generate Summary')
+      showWelcomeMessage('generate-summary-view', 'Student Development Profile')
     }
   }
 

@@ -9,8 +9,8 @@ function showSummaryDetails () {
 function generateUserSummaryInfo (summary) {
   const userSummarySection = document.getElementById('user-summary-info')
   userSummarySection.innerHTML = `
-      <h2>Generate User Summary</h2>
-      <button id="generate-user-summary" class="btn btn-primary">Generate User Summary</button>
+      <h2>Generate Student Development Summary</h2>
+      <button id="generate-user-summary" class="btn btn-primary">Generate Student Development Summary</button>
       <div class="form-group">
         <p id="user-summary" class="summary-text">Generated summary will appear here</p>
       </div>
