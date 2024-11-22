@@ -258,7 +258,8 @@ function saveEvidence () {
         const strongElement = behaviourItem.querySelector('strong')
         if (strongElement) {
           behaviour = strongElement.textContent.trim()
-          subBehaviour = behaviourItem.textContent.split(':')[1].trim()
+          const splitText = behaviourItem.textContent.split(':')[1]
+          subBehaviour = splitText ? splitText.trim() : behaviourItem.textContent.trim()
         } else {
           const categoryHeading = behaviourItem.closest('.behaviour-category').querySelector('h5')
           behaviour = categoryHeading ? categoryHeading.textContent.trim() : ''
