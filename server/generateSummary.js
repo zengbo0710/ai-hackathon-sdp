@@ -6,7 +6,7 @@ async function generateSummary (longText) {
 
   try {
     const response = await axios.post(apiUrl, {
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: 'You are a helpful assistant that summarizes key achievements and impacts from a given text.' },
         { role: 'user', content: `Please based on the following text, extract the key things has been done, and more importantly the impacts in one single paragraph not more than 100 words, do not add any additional information that is not part of the provided data:\n\n${longText}` }

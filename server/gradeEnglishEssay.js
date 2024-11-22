@@ -25,7 +25,7 @@ Total|[total]/100|Overall assessment`
 
   try {
     const response = await axios.post(apiUrl, {
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: levelPrompt },
         { role: 'user', content: essay }

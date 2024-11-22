@@ -39,7 +39,7 @@ Format your response in HTML with appropriate tags for structured presentation:
 
   try {
     const response = await axios.post(apiUrl, {
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: imagePrompt },
         {

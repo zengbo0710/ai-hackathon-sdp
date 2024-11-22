@@ -14,7 +14,7 @@ async function generateSummaryAndBehaviours (longText, userId) {
 
   try {
     const response = await axios.post(apiUrl, {
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: 'You are a helpful assistant that analyzes text and suggests relevant behaviours.' },
         {

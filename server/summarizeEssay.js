@@ -19,7 +19,7 @@ Please provide your analysis in clear paragraphs, organizing the information und
 
   try {
     const evidenceResponse = await axios.post(apiUrl, {
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: evidenceSummaryPrompt },
         { role: 'user', content: `Essay: ${essay}\n\nGrading Response: ${gradingResponse}` }
