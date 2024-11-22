@@ -64,13 +64,16 @@ function displayUserInfo (user) {
   addFadeInAnimation(userInfoSection)
   createVelocityChart(user.user_id)
 
-  // Add Modify button
-  const modifyButton = document.createElement('button')
-  modifyButton.id = 'modify-user-details'
-  modifyButton.className = 'btn btn-secondary'
-  modifyButton.textContent = 'Modify'
-  modifyButton.onclick = enableModifyMode
-  userInfoSection.appendChild(modifyButton)
+  // Add Modify button only for users with appropriate permissions
+  const hasModifyPermission = false
+  if (hasModifyPermission) {
+    const modifyButton = document.createElement('button')
+    modifyButton.id = 'modify-user-details'
+    modifyButton.className = 'btn btn-secondary'
+    modifyButton.textContent = 'Modify'
+    modifyButton.onclick = enableModifyMode
+    userInfoSection.appendChild(modifyButton)
+  }
 }
 
 function enableModifyMode () {
@@ -419,11 +422,11 @@ function createRadarChart (name) {
 
   const data = {
     labels: [
-      'Personalized\nAcademics',
-      'Social Skills &\nEthics',
-      'Physical &\nMental Health',
-      'Creativity &\nInnovation',
-      'Global\nAwareness'
+      'Academics',
+      'Social Skills',
+      'Holistic Creative Development',
+      'Character Development',
+      'Physical Wellness'
     ],
     datasets: [
       {
