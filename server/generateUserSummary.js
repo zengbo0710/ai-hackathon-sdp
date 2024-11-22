@@ -9,10 +9,10 @@ async function generateSummary (userId) {
 
   try {
     const response = await axios.post(apiUrl, {
-      model: 'gpt-4o',
+      model: 'o1-preview',
       messages: [
         {
-          role: 'system',
+          role: 'user',
           content: 'You are an educational analyst specialized in student development. Analyze provided data to create comprehensive student assessments with actionable insights.'
         },
         {
@@ -30,9 +30,9 @@ ${userSchema.impact.map(i => i.description).join('\n')}
 Behavioral Evidence:
 ${userSchema.behaviour.flatMap(b => b.sub_behaviour.flatMap(sb => sb.evidences.map(e => e.summary))).join('\n')}`
         }
-      ],
-      max_tokens: 800,
-      temperature: 0.7
+      ]
+      // max_tokens: 800,
+      // temperature: 0.7
     }, {
       headers: {
         Authorization: `Bearer ${apiKey}`,
