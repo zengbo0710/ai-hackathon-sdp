@@ -37,6 +37,63 @@ Format your response in HTML with appropriate tags for structured presentation:
 </div>
 `
 
+  const moderationUrl = 'https://api.openai.com/v1/moderations'
+  let moderationResults = null
+
+  try {
+    const moderationResponse = await axios.post(moderationUrl, {
+      model: 'omni-moderation-latest',
+      input: [
+        {
+          type: 'image_url',
+          image_url: {
+            url: drawing
+          }
+        }
+      ],
+      max_tokens: 1000,
+      temperature: 0.7
+    }, {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      }
+    })
+
+    // Format the moderation results into HTML table
+    const results = moderationResponse.data.results[0]
+    console.log(results)
+    delete results.category_applied_input_types
+
+    // Create HTML table for moderation results
+    let tableHTML = `
+      <div class="moderation-results">
+        <h3>Content Moderation Results</h3>
+        <table class="moderation-table">
+          <tr>
+            <th>Category</th>
+            <th>Score</th>
+          </tr>`
+    
+    // Add rows for category scores
+    Object.entries(results.category_scores).forEach(([category, score]) => {
+      tableHTML += `
+          <tr>
+            <td>${category}</td>
+            <td>${score.toFixed(6)}</td>
+          </tr>`
+    })
+    
+    tableHTML += `
+        </table>
+      </div>`
+    
+    moderationResults = tableHTML
+  } catch (error) {
+    console.error('Error during moderation:', error)
+    throw new Error('Failed to moderate drawing')
+  }
+
   try {
     const response = await axios.post(apiUrl, {
       model: 'gpt-4o-mini',
@@ -64,7 +121,8 @@ Format your response in HTML with appropriate tags for structured presentation:
       }
     })
     const cleanedResponse = response.data.choices[0].message.content.trim().replace(/\n/g, ' ').replace(/"/g, '')
-    return cleanedResponse
+    const finalResponse = `${cleanedResponse} <br> ${moderationResults}`
+    return finalResponse
   } catch (error) {
     console.error('Error analyzing drawing:', error)
     throw new Error('Failed to analyze drawing')
