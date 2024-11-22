@@ -25,11 +25,11 @@ function generateAddNewRecordSection() {
       <h2>Add New Record</h2>
       <div class="evidence-form">
         <div class="form-group">
-          <label for="evidence-text">Record Full Text:</label>
+          <label for="evidence-text">Development Details:</label>
           <textarea id="evidence-text" rows="4" placeholder="Enter the full text of the record"></textarea>
         </div>
         <div class="form-group">
-          <label for="evidence-link">Record Link:</label>
+          <label for="evidence-link">Development Record:</label>
           <input type="url" id="evidence-link" placeholder="Enter the link to the record">
         </div>
         <button id="generate-evidence-summary" class="btn btn-primary">Generate Record Summary</button>
