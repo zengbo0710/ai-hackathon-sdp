@@ -21,8 +21,6 @@ async function generateSummaryAndBehaviours (longText, userId) {
           role: 'user',
           content: `Given the following text and the sample schema, please suggest the top 5 most relevant sub_behaviours along with their corresponding behaviour names based on the given text. 
           
-IMPORTANT: Prioritize suggesting sub_behaviours that have 0 evidences (meaning they haven't been used before) unless there is a very strong match with a sub_behaviour that already has evidence. This helps in discovering new relevant behaviours.
-
 Text: ${longText}
 
 Sample Schema:
