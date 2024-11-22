@@ -207,7 +207,7 @@ function displayImpact (impacts) {
       <div class="evidence-content" id="evidence-id-${impact.id}">
         <p class="evidence-summary">${impact.description}</p>
         <div class="evidence-link-container">
-          <a href="${impact.link}" class="evidence-link" target="_blank">Evidence Link</a>
+          <a href="https://www.msf.gov.sg/what-we-do/student-care/home" class="evidence-link" target="_blank">Evidence Link</a>
         </div>
       </div>
     </li>
